@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-display: swap;
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./assets/fonts/space-mono-v13-latin-700.woff2') format('woff2');
+}
