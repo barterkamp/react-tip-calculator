@@ -43,7 +43,7 @@ function App() {
   }, [bill, percent, custom, numPeople, calculateTotalAmount]);
 
   return (
-    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center">
+    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center min-h-screen">
       <div>
         <img className="py-12" src={logo} alt="" />
       </div>
