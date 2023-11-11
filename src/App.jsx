@@ -45,9 +45,9 @@ function App() {
   }, [bill, percent, custom, numPeople, calculateTotalAmount]);
 
   return (
-    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center justify-center min-h-screen">
+    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center justify-center min-h-screen md:px-4">
       <div>
-        <img className="mb-12" src={logo} alt="" />
+        <img className="mt-12 mb-12 md:mt-0" src={logo} alt="" />
       </div>
       <main className="max-w-[920px] bg-white p-8 rounded-3xl flex flex-col gap-8 md:flex-row">
         <div className="input md:flex-1 md:grow">

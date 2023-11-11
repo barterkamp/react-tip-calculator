@@ -1,5 +1,5 @@
 import React from 'react';
-import dollarIcon from '../assets/images/icon-dollar.svg';
+import euroIcon from '../assets/images/icon-euro.svg';
 
 function BillInput({ bill, setBill }) {
   const handleInputChange = (event) => {
@@ -24,7 +24,7 @@ function BillInput({ bill, setBill }) {
           onChange={handleInputChange}
           placeholder="0"
         />
-        <img className="absolute top-1/2 -translate-y-1/2 left-4 block" src={dollarIcon} alt="" />
+        <img className="absolute top-1/2 -translate-y-1/2 left-4 block" src={euroIcon} alt="" />
       </p>
     </form>
   );

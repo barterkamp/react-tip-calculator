@@ -28,7 +28,7 @@ function Output({
           <span className="block text-sm text-lightGray font-spaceMono">/ person</span>
         </div>
         <div>
-          <p className="text-3xl text-mediumGreen font-spaceMono md:text-5xl">${tipAmount}</p>
+          <p className="text-3xl text-mediumGreen font-spaceMono md:text-5xl">€{tipAmount}</p>
         </div>
       </div>
       <div className="flex justify-between items-center mb-8">
@@ -37,7 +37,7 @@ function Output({
           <span className="block text-sm text-lightGray font-spaceMono">/ person</span>
         </div>
         <div>
-          <p className="text-3xl text-mediumGreen font-spaceMono md:text-5xl">${totalAmount}</p>
+          <p className="text-3xl text-mediumGreen font-spaceMono md:text-5xl">€{totalAmount}</p>
         </div>
       </div>
       <button
