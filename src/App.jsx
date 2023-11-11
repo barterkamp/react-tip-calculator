@@ -9,15 +9,18 @@ import Output from './components/Output.jsx';
 function App() {
   const [bill, setBill] = useState('');
   const [percent, setPercent] = useState('');
+  const [selectedButtonId, setSelectedButtonId] = useState(null);
   const [custom, setCustom] = useState('');
   const [numPeople, setNumPeople] = useState('');
   const [tipAmount, setTipAmount] = useState('0.00');
   const [totalAmount, setTotalAmount] = useState('0.00');
   const [error, setError] = useState(false);
+  const [reset, setReset] = useState(false);
 
   const calculateAmount = (bill, percent, custom, numPeople) => {
     // Check if all required values are present
     if (bill && (percent || custom) && numPeople && Number(numPeople > 0)) {
+      setReset(true);
       return (Number(bill) * (Number(percent) / 100 || Number(custom) / 100)) / Number(numPeople);
     } else return 0.0; // Default value when any of the required values is missing
   };
@@ -42,24 +45,49 @@ function App() {
   }, [bill, percent, custom, numPeople, calculateTotalAmount]);
 
   return (
-    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center min-h-screen">
+    <div id="page-wrapper" className="bg-[#C5E4E7] flex flex-col items-center justify-center min-h-screen">
       <div>
-        <img className="py-12" src={logo} alt="" />
+        <img className="mb-12" src={logo} alt="" />
       </div>
-      <div id="component-wrapper" className="bg-white p-8 rounded-3xl">
-        <div className="mb-8">
-          <BillInput bill={bill} setBill={setBill} />
+      <main className="max-w-[920px] bg-white p-8 rounded-3xl flex flex-col gap-8 md:flex-row">
+        <div className="input md:flex-1 md:grow">
+          <div>
+            <BillInput bill={bill} setBill={setBill} />
+          </div>
+          <p className="mb-4 text-base text-darkGray font-spaceMono">Select tip %</p>
+          <div className="grid gap-4 grid-cols-2 mb-8 md:grid-cols-3">
+            <Buttons
+              percent={percent}
+              setPercent={setPercent}
+              setCustom={setCustom}
+              selectedButtonId={selectedButtonId}
+              setSelectedButtonId={setSelectedButtonId}
+            />
+            <CustomInput
+              custom={custom}
+              setCustom={setCustom}
+              setPercent={setPercent}
+              setSelectedButtonId={setSelectedButtonId}
+            />
+          </div>
+          <div className="mb-8">
+            <PeopleInput numPeople={numPeople} setNumPeople={setNumPeople} error={error} setError={setError} />
+          </div>
         </div>
-        <p className="mb-4 text-base text-darkGray font-spaceMono">Select tip %</p>
-        <div className="grid gap-4 grid-cols-2 mb-8">
-          <Buttons percent={percent} setPercent={setPercent} setCustom={setCustom} />
-          <CustomInput custom={custom} setCustom={setCustom} setPercent={setPercent} />
+        <div className="output md:flex-1 md:grow">
+          <Output
+            tipAmount={tipAmount}
+            totalAmount={totalAmount}
+            setSelectedButtonId={setSelectedButtonId}
+            setBill={setBill}
+            setNumPeople={setNumPeople}
+            reset={reset}
+            setReset={setReset}
+            setCustom={setCustom}
+            setError={setError}
+          />
         </div>
-        <div className="mb-8">
-          <PeopleInput numPeople={numPeople} setNumPeople={setNumPeople} error={error} setError={setError} />
-        </div>
-        <Output tipAmount={tipAmount} totalAmount={totalAmount} />
-      </div>
+      </main>
     </div>
   );
 }
