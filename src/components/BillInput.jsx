@@ -1,4 +1,5 @@
 import React from 'react';
+import dollarIcon from '../assets/images/icon-dollar.svg';
 
 function BillInput({ bill, setBill }) {
   const handleInputChange = (event) => {
@@ -9,19 +10,22 @@ function BillInput({ bill, setBill }) {
   };
   return (
     <form className="mb-8">
-      <p className="mb-2">
+      <p className="mb-2 ">
         <label htmlFor="bill-input" className="text-base text-darkGray font-spaceMono">
           Bill
         </label>
       </p>
-      <input
-        className="bg-lighterGray text-2xl placeholder-lightGray text-darkGreen font-spaceMono text-right w-full block rounded-md px-4 py-2 focus:outline-mediumGreen"
-        id="bill-input"
-        type="number"
-        value={bill}
-        onChange={handleInputChange}
-        placeholder="0"
-      />
+      <p className="relative">
+        <input
+          className="bg-lighterGray border-2 border-lighterGray text-2xl placeholder-lightGray text-darkGreen font-spaceMono text-right w-full block rounded-md px-4 py-2 focus:outline-mediumGreen"
+          id="bill-input"
+          type="number"
+          value={bill}
+          onChange={handleInputChange}
+          placeholder="0"
+        />
+        <img className="absolute top-1/2 -translate-y-1/2 left-4 block" src={dollarIcon} alt="" />
+      </p>
     </form>
   );
 }
