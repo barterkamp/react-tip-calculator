@@ -13,14 +13,13 @@ function App() {
   const [numPeople, setNumPeople] = useState('');
   const [tipAmount, setTipAmount] = useState('0.00');
   const [totalAmount, setTotalAmount] = useState('0.00');
+  const [error, setError] = useState(false);
 
   const calculateAmount = (bill, percent, custom, numPeople) => {
     // Check if all required values are present
     if (bill && (percent || custom) && numPeople && Number(numPeople > 0)) {
       return (Number(bill) * (Number(percent) / 100 || Number(custom) / 100)) / Number(numPeople);
-    } else {
-      return 0.0; // Default value when any of the required values is missing
-    }
+    } else return 0.0; // Default value when any of the required values is missing
   };
 
   const calculateTotalAmount = (bill, percent, custom, numPeople) => {
@@ -57,7 +56,7 @@ function App() {
           <CustomInput custom={custom} setCustom={setCustom} setPercent={setPercent} />
         </div>
         <div className="mb-8">
-          <PeopleInput numPeople={numPeople} setNumPeople={setNumPeople} />
+          <PeopleInput numPeople={numPeople} setNumPeople={setNumPeople} error={error} setError={setError} />
         </div>
         <Output tipAmount={tipAmount} totalAmount={totalAmount} />
       </div>

@@ -11,7 +11,7 @@ export default {
         darkGray: '#5E7A7D',
         lightGray: '#7F9D9F',
         lighterGray: '#F3F9FA',
-        error: '#E17457',
+        warning: '#E17457',
       },
       fontFamily: {
         spaceMono: ['"Space Mono"', 'mono'],

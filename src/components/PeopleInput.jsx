@@ -1,24 +1,31 @@
 import React from 'react';
 
-function PeopleInput({ numPeople, setNumPeople }) {
+function PeopleInput({ numPeople, setNumPeople, error, setError }) {
+  // function to handle the input
   const handleInputChange = (event) => {
     const peopleValue = event.target.value;
-    if (peopleValue < 0) {
-      setNumPeople('0');
+    setNumPeople(peopleValue);
+
+    if (peopleValue <= 0) {
+      setError(true);
+      setNumPeople('0'); // avoids negative numbers in input
     } else {
-      setNumPeople(peopleValue);
+      setError(false);
     }
   };
 
   return (
     <form className="mb-8">
-      <p className="mb-2">
+      <div className="mb-2 flex justify-between">
         <label htmlFor="people-input" className="text-base text-darkGray font-spaceMono">
           Number of People
         </label>
-      </p>
+        <span className={`text-base text-warning font-spaceMono ${error ? 'block' : 'hidden'}`}>Can't be zero</span>
+      </div>
       <input
-        className="bg-lighterGray text-2xl placeholder-lightGray text-darkGreen font-spaceMono text-right w-full block rounded-md px-4 py-2"
+        className={`bg-lighterGray text-2xl placeholder-lightGray text-darkGreen font-spaceMono text-right w-full block rounded-md px-4 py-2 ${
+          error ? 'focus:outline-warning' : 'focus:outline-mediumGreen'
+        }`}
         id="people-input"
         type="number"
         value={numPeople}
