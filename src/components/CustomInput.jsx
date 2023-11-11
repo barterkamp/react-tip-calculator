@@ -1,9 +1,10 @@
 import React from 'react';
 
-function CustomInput({ custom, setCustom, setPercent }) {
+function CustomInput({ custom, setCustom, setPercent, setSelectedButtonId }) {
   const handleInputChange = (event) => {
     const customValue = event.target.value;
     setCustom(customValue);
+    setSelectedButtonId(null);
     setPercent('');
   };
 
