@@ -49,7 +49,7 @@ function App() {
       <div>
         <img className="mt-12 mb-12 md:mt-0" src={logo} alt="" />
       </div>
-      <main className="max-w-[920px] bg-white p-8 rounded-3xl flex flex-col gap-8 md:flex-row">
+      <main className="mb-12 md:mb-0 max-w-[920px] bg-white p-8 rounded-3xl flex flex-col gap-8 md:flex-row">
         <div className="input md:flex-1 md:grow">
           <div>
             <BillInput bill={bill} setBill={setBill} />
