@@ -9,7 +9,7 @@ function PeopleInput({ numPeople, setNumPeople, error, setError }) {
 
     if (peopleValue <= 0) {
       setError(true);
-      setNumPeople('0'); // avoids negative numbers in input
+      setNumPeople(''); // avoids negative numbers in input
     } else {
       setError(false);
     }
